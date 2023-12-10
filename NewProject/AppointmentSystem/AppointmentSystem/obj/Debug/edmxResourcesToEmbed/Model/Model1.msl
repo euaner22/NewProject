@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBAppointmentModelStoreContainer" CdmEntityContainer="DBAppointmentEntities1">
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="DBAppointmentModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctors">
+      <EntityTypeMapping TypeName="DBAppointmentModel.Doctors">
+        <MappingFragment StoreEntitySet="Doctors">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patient">
+      <EntityTypeMapping TypeName="DBAppointmentModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="PNumber" ColumnName="PNumber" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_admin">
+      <EntityTypeMapping TypeName="DBAppointmentModel.view_admin">
+        <MappingFragment StoreEntitySet="view_admin">
+          <ScalarProperty Name="DOCTOR" ColumnName="DOCTOR" />
+          <ScalarProperty Name="DOCTOR_GENDER" ColumnName="DOCTOR_GENDER" />
+          <ScalarProperty Name="DOCTOR_Phone" ColumnName="DOCTOR_Phone" />
+          <ScalarProperty Name="PATIENT" ColumnName="PATIENT" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PNumber" ColumnName="PNumber" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_DeleteAppointment" FunctionName="DBAppointmentModel.Store.sp_DeleteAppointment" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteAppointment1" FunctionName="DBAppointmentModel.Store.sp_DeleteAppointment1" />
+    <FunctionImportMapping FunctionImportName="DeleteAppointment" FunctionName="DBAppointmentModel.Store.DeleteAppointment" />
+  </EntityContainerMapping>
+</Mapping>

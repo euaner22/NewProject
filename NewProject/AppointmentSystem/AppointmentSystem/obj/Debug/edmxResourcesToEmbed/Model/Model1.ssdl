@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBAppointmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Doctors">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="int" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PNumber" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBAppointment.dbo.view_admin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_admin">
+    <Key>
+      <PropertyRef Name="DOCTOR" />
+      <PropertyRef Name="PATIENT" />
+    </Key>
+    <Property Name="DOCTOR" Type="nvarchar" MaxLength="102" Nullable="false" />
+    <Property Name="DOCTOR_GENDER" Type="nvarchar" MaxLength="50" />
+    <Property Name="DOCTOR_Phone" Type="int" />
+    <Property Name="PATIENT" Type="nvarchar" MaxLength="102" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="PNumber" Type="int" />
+    <Property Name="Date" Type="date" />
+  </EntityType>
+  <Function Name="DeleteAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PatientID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PatientID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteAppointment1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PatientID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="DBAppointmentModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="view_admin" EntityType="Self.view_admin" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_admin].[DOCTOR] AS [DOCTOR], 
+    [view_admin].[DOCTOR_GENDER] AS [DOCTOR_GENDER], 
+    [view_admin].[DOCTOR_Phone] AS [DOCTOR_Phone], 
+    [view_admin].[PATIENT] AS [PATIENT], 
+    [view_admin].[Gender] AS [Gender], 
+    [view_admin].[PNumber] AS [PNumber], 
+    [view_admin].[Date] AS [Date]
+    FROM [dbo].[view_admin] AS [view_admin]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
