@@ -44,14 +44,8 @@ warning 6002: The table/view 'DBAppointment.dbo.view_admin' does not have a prim
     <Property Name="PNumber" Type="int" />
     <Property Name="Date" Type="date" />
   </EntityType>
-  <Function Name="DeleteAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="PatientID" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_DeleteAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="PatientID" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_DeleteAppointment1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="PatientID" Type="int" Mode="In" />
+  <Function Name="sp_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="DBAppointmentModelStoreContainer">
     <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />

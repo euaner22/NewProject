@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBAppointmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBAppointmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="id" />
@@ -49,14 +49,8 @@ warning 6002: The table/view 'DBAppointment.dbo.view_admin' does not have a prim
           <Property Name="PNumber" Type="int" />
           <Property Name="Date" Type="date" />
         </EntityType>
-        <Function Name="DeleteAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="PatientID" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_DeleteAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="PatientID" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_DeleteAppointment1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="PatientID" Type="int" Mode="In" />
+        <Function Name="sp_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="DBAppointmentModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
@@ -74,8 +68,7 @@ warning 6002: The table/view 'DBAppointment.dbo.view_admin' does not have a prim
     FROM [dbo].[view_admin] AS [view_admin]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBAppointmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -135,6 +128,9 @@ warning 6002: The table/view 'DBAppointment.dbo.view_admin' does not have a prim
           <FunctionImport Name="sp_DeleteAppointment1">
             <Parameter Name="PatientID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_Delete">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -187,10 +183,8 @@ warning 6002: The table/view 'DBAppointment.dbo.view_admin' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="DeleteAppointment" FunctionName="DBAppointmentModel.Store.DeleteAppointment" />
-          <FunctionImportMapping FunctionImportName="sp_DeleteAppointment" FunctionName="DBAppointmentModel.Store.sp_DeleteAppointment" />
-          <FunctionImportMapping FunctionImportName="sp_DeleteAppointment1" FunctionName="DBAppointmentModel.Store.sp_DeleteAppointment1" />
-        </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="sp_Delete" FunctionName="DBAppointmentModel.Store.sp_Delete" />
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

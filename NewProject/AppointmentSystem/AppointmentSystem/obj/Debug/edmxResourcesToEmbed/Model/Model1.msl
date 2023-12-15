@@ -46,8 +46,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="DeleteAppointment" FunctionName="DBAppointmentModel.Store.DeleteAppointment" />
-    <FunctionImportMapping FunctionImportName="sp_DeleteAppointment" FunctionName="DBAppointmentModel.Store.sp_DeleteAppointment" />
-    <FunctionImportMapping FunctionImportName="sp_DeleteAppointment1" FunctionName="DBAppointmentModel.Store.sp_DeleteAppointment1" />
+    <FunctionImportMapping FunctionImportName="sp_Delete" FunctionName="DBAppointmentModel.Store.sp_Delete" />
   </EntityContainerMapping>
 </Mapping>

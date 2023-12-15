@@ -58,5 +58,14 @@ namespace AppointmentSystem.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DeleteAppointment1", patientIDParameter);
         }
+    
+        public virtual int sp_Delete(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Delete", idParameter);
+        }
     }
 }

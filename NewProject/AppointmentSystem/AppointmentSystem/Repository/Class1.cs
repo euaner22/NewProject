@@ -39,7 +39,7 @@ namespace AppointmentSystem.Repository
             {
                 try
                 {
-                    db.DeleteAppointment(pId);
+                    db.sp_Delete(pId);
                     szResponse = "Deleted";
                     return ErrorCode.Success;
                 }

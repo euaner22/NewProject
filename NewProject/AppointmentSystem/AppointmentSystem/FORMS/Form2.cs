@@ -20,8 +20,8 @@ namespace AppointmentSystem
         public Form2()
         {
             InitializeComponent();
-            Class1 class1 = new Class1();
-
+            
+            class1 = new Class1();
         }
         public void loadgrid()
         {

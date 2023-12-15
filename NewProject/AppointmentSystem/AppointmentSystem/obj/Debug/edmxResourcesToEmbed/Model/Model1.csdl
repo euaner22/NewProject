@@ -56,5 +56,8 @@
     <FunctionImport Name="sp_DeleteAppointment1">
       <Parameter Name="PatientID" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="sp_Delete">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
 </Schema>
