@@ -15,10 +15,10 @@ namespace AppointmentSystem.Model
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class DBAppointmentEntities1 : DbContext
+    public partial class DBAppointmentEntities2 : DbContext
     {
-        public DBAppointmentEntities1()
-            : base("name=DBAppointmentEntities1")
+        public DBAppointmentEntities2()
+            : base("name=DBAppointmentEntities2")
         {
         }
     
@@ -31,6 +31,15 @@ namespace AppointmentSystem.Model
         public virtual DbSet<Doctors> Doctors { get; set; }
         public virtual DbSet<Patient> Patient { get; set; }
         public virtual DbSet<view_admin> view_admin { get; set; }
+    
+        public virtual ObjectResult<string> DeleteAppointment(Nullable<int> patientID)
+        {
+            var patientIDParameter = patientID.HasValue ?
+                new ObjectParameter("PatientID", patientID) :
+                new ObjectParameter("PatientID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("DeleteAppointment", patientIDParameter);
+        }
     
         public virtual ObjectResult<string> sp_DeleteAppointment(Nullable<int> patientID)
         {
@@ -48,15 +57,6 @@ namespace AppointmentSystem.Model
                 new ObjectParameter("PatientID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DeleteAppointment1", patientIDParameter);
-        }
-    
-        public virtual ObjectResult<string> DeleteAppointment(Nullable<int> patientID)
-        {
-            var patientIDParameter = patientID.HasValue ?
-                new ObjectParameter("PatientID", patientID) :
-                new ObjectParameter("PatientID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("DeleteAppointment", patientIDParameter);
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AppointmentSystem.Model;
 using AppointmentSystem.Repository;
+using AppointmentSystem.utils;
 
 namespace AppointmentSystem
 {
@@ -36,7 +37,7 @@ namespace AppointmentSystem
         private void button1_Click(object sender, EventArgs e)
         {
             
-                using (DBAppointmentEntities1 db = new DBAppointmentEntities1())
+                using (DBAppointmentEntities2 db = new DBAppointmentEntities2())
                 {
                     if (String.IsNullOrEmpty(txtFName.Text))
                     {
@@ -78,6 +79,26 @@ namespace AppointmentSystem
 
         private void button2_Click(object sender, EventArgs e)
         {
+            String strOutputMsg = "";
+            if (String.IsNullOrEmpty(txtId.Text))
+            {
+                errorProviderCustom.SetError(txtId, "Empty Field");
+                return;
+            }
+            ErrorCode retValue = class1.DeletePsitsUsingStoredProf(Convert.ToInt32(txtId.Text), ref strOutputMsg);
+            if (retValue != ErrorCode.Success)
+            {
+                errorProviderCustom.Clear();
+                MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                loadgrid();
+
+                txtId.Text = "";
+            }
+            else
+            {
+                MessageBox.Show(strOutputMsg, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 

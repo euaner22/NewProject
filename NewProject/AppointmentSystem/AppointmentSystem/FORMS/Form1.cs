@@ -13,11 +13,11 @@ namespace AppointmentSystem
 {
     public partial class Form1 : Form
     {
-        DBAppointmentEntities1 db;
+        DBAppointmentEntities2 db;
         public Form1()
         {
             InitializeComponent();
-            db = new DBAppointmentEntities1();
+            db = new DBAppointmentEntities2();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace AppointmentSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (DBAppointmentEntities1 db = new DBAppointmentEntities1())
+            using (DBAppointmentEntities2 db = new DBAppointmentEntities2())
             {
                 if (String.IsNullOrEmpty(txtFName.Text))
                 {

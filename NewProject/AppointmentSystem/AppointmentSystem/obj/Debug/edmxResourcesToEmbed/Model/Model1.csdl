@@ -42,18 +42,18 @@
     <Property Name="PNumber" Type="Int32" />
     <Property Name="Date" Type="DateTime" Precision="0" />
   </EntityType>
-  <EntityContainer Name="DBAppointmentEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DBAppointmentEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Admin" EntityType="Self.Admin" />
     <EntitySet Name="Doctors" EntityType="Self.Doctors" />
     <EntitySet Name="Patient" EntityType="Self.Patient" />
     <EntitySet Name="view_admin" EntityType="Self.view_admin" />
+    <FunctionImport Name="DeleteAppointment" ReturnType="Collection(String)">
+      <Parameter Name="PatientID" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="sp_DeleteAppointment" ReturnType="Collection(String)">
       <Parameter Name="PatientID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_DeleteAppointment1">
-      <Parameter Name="PatientID" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="DeleteAppointment" ReturnType="Collection(String)">
       <Parameter Name="PatientID" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
